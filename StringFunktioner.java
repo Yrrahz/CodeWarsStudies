@@ -55,4 +55,31 @@ public class StringFunktioner{
         
         return sb.reverse().toString();
     }
+
+    /**
+     * Assume "#" is like a backspace in string. This means that string "a#bc#d" actually is "bd"
+     *
+     * Your task is to process a string with "#" symbols.
+     */
+    public static String cleanString(String s) {
+        char[] chars = s.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for(char ch : chars){
+            if(ch != '#'){
+                sb.append(ch);
+            }else{
+                if (sb.length() > 0) {
+                    sb.setLength(sb.length() - 1);
+                }
+            }
+        }
+        return sb.toString();
+
+        /* // Best answer
+        public String cleanString(String s) {
+            while (s.matches(".*[^#]#.*")) s = s.replaceAll("[^#]#", "");
+            return s.replaceAll("#","");
+         }
+        */
+    }
 }

@@ -57,4 +57,12 @@ public class StringFunktionerTest
         assertEquals(StringFunktioner.seperateNumber("1500000"), "1,500,000");
         assertEquals(StringFunktioner.seperateNumber("500"), "500");
     }
+
+    @Test
+    public void testCleanString(){
+        System.out.println("Clean string: a#bc#d");
+        assertEquals("bd", StringFunktioner.cleanString("a#bc#d"));
+        System.out.println("Clean string: a#b###c#d#");
+        assertEquals("", StringFunktioner.cleanString("a#b###c#d#"));
+    }
 }
