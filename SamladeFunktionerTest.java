@@ -85,4 +85,58 @@ public class SamladeFunktionerTest{
         assertEquals("Range: 01|01|18 Average: 01|38|05 Median: 01|32|34",
             SamladeFunktioner.statAthleticAssociation("01|15|59, 1|47|16, 01|17|20, 1|32|34, 2|17|17"));
     }
+
+    @Test
+    public void testTheOffice_part1_Outed1(){
+        Person[] meet = new Person[] {
+                new Person("tim", 0),
+                new Person("jim", 2),
+                new Person("randy", 0),
+                new Person("sandy", 7),
+                new Person("andy", 0),
+                new Person("katie", 5),
+                new Person("laura", 1),
+                new Person("saajid", 2),
+                new Person("alex", 3),
+                new Person("john", 2),
+                new Person("mr", 0)
+        };
+        assertEquals("Get Out Now!", SamladeFunktioner.outed(meet, "laura"));
+    }
+
+    @Test
+    public void testTheOffice_part1_Outed2(){
+        Person[] meet = new Person[] {
+                new Person("tim", 1),
+                new Person("jim", 3),
+                new Person("randy", 9),
+                new Person("sandy", 6),
+                new Person("andy", 7),
+                new Person("katie", 6),
+                new Person("laura", 9),
+                new Person("saajid", 9),
+                new Person("alex", 9),
+                new Person("john", 9),
+                new Person("mr", 8)
+        };
+        assertEquals("Nice Work Champ!", SamladeFunktioner.outed(meet, "katie"));
+    }
+
+    @Test
+    public void testTheOffice_part1_Outed3(){
+        Person[] meet = new Person[] {
+                new Person("tim", 2),
+                new Person("jim", 4),
+                new Person("randy", 0),
+                new Person("sandy", 5),
+                new Person("andy", 8),
+                new Person("katie", 6),
+                new Person("laura", 2),
+                new Person("saajid", 2),
+                new Person("alex", 3),
+                new Person("john", 2),
+                new Person("mr", 8),
+        };
+        assertEquals("Get Out Now!", SamladeFunktioner.outed(meet, "john"));
+    }
 }

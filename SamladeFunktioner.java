@@ -21,7 +21,7 @@ public class SamladeFunktioner
     /**
      * Is a number prime?
      * 
-     * @param  x   Integer
+     * @param  n   Integer
      * @return     True if x is a prime. 
      */
     public boolean is_prime(int n){
@@ -59,8 +59,8 @@ public class SamladeFunktioner
     
     /**
      * Weight for weight - challange at codewars
-     * @param  String   Initial string to be sorted.
-     * @return  String  Sorted String according to description.
+     * @param  string   Initial string to be sorted.
+     * @return  string  Sorted String according to description.
      */
     public String orderWeight(String string){
         int charValue;
@@ -401,4 +401,40 @@ public class SamladeFunktioner
         }
         return String.valueOf(d);
     }
+
+    // The Office - part 1 - Outed
+    /*
+        Difficulty 7.
+        This challenge is only to calculate an average score
+     */
+    public static String outed(Person[] meet, String boss) {
+        double totalHappiness = 0;
+        for(Person p : meet){
+            totalHappiness = totalHappiness + p.happiness;
+            if(p.name.equals(boss)){
+                totalHappiness = totalHappiness + p.happiness;
+            }
+        }
+        totalHappiness = totalHappiness / meet.length;
+
+        if(totalHappiness > 5){
+            return "Nice Work Champ!";
+        }else{
+            return "Get Out Now!";
+        }
+    }
+    /* // Best Practice
+      private static final String GOOD = "Nice Work Champ!";
+      private static final String BAD = "Get Out Now!";
+
+      public static String outed(Person[] meet, String boss) {
+        double rating = Arrays.stream(meet)
+                              .mapToInt(person ->
+                                person.name.equals(boss) ? person.happiness * 2
+                                                         : person.happiness)
+                              .average()
+                              .orElse(0.0);
+        return (rating > 5) ? GOOD : BAD;
+      }
+     */
 }
