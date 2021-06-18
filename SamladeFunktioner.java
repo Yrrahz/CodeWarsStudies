@@ -280,38 +280,41 @@ public class SamladeFunktioner
      * if the given string is "" you should return "".
      */
     public static String statAthleticAssociation(String strg){
-        if(strg.isEmpty() || strg == null){
+        if(strg.isEmpty()){
             return "";
         }
         int range, average, median;
-	String[] extractVariables = strg.split("[,|\\|]");
+	String[] extractVariables = strg.split("[,|]");
 	int[] extractSecounds = new int[extractVariables.length/3];
 	int max = 0, min = Integer.MAX_VALUE;
 
 	int c = 1, i = 0, val = 0;
 	for(String s : extractVariables){
-	    Integer number = Integer.valueOf(s.trim());
+	    int number = Integer.parseInt(s.trim());
 
-	    switch(c){
-	        case 1:
-	           val = val + number*60*60;
-	           c++;
-	           break;
-	        case 2:
-	           val = val + number*60;
-	           c++;
-	           break;
-	        case 3:
-	           val = val + number;
-	           extractSecounds[i] = val;
-	           if(max < val){
-	               max = val;
-	           }
-	           if(min > val){
-	               min = val;
-	           }
-	           c = 1; val = 0; i++;
-	    }
+        switch (c) {
+            case 1 -> {
+                val = val + number * 60 * 60;
+                c++;
+            }
+            case 2 -> {
+                val = val + number * 60;
+                c++;
+            }
+            case 3 -> {
+                val = val + number;
+                extractSecounds[i] = val;
+                if (max < val) {
+                    max = val;
+                }
+                if (min > val) {
+                    min = val;
+                }
+                c = 1;
+                val = 0;
+                i++;
+            }
+        }
 	}
 	range = max - min;
 
