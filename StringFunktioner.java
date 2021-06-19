@@ -82,4 +82,28 @@ public class StringFunktioner{
          }
         */
     }
+
+    /*
+    The Office part 3 - broken
+    Replace all '0' to '1' and '1' to '0'.
+    Difficulty 7.
+     */
+    public static String broken(final String x) {
+        char[] result = new char[x.length()];
+        int i = 0;
+        for(char ch : x.toCharArray()){
+            if(ch == '1'){
+                result[i] = '0';
+            }else{
+                result[i] = '1';
+            }
+            i++;
+        }
+        return new String(result);
+    }
+    /* // Best solution
+    public static String broken(final String x) {
+        return x.replace("0"," ").replace("1","0").replace(" ","1");
+    }
+     */
 }

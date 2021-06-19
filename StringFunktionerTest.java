@@ -65,4 +65,12 @@ public class StringFunktionerTest
         System.out.println("Clean string: a#b###c#d#");
         assertEquals("", StringFunktioner.cleanString("a#b###c#d#"));
     }
+
+    @Test
+    public void testTheOffice_part3_Broken() {
+        // assertEquals("expected", "actual");
+        assertEquals("0", StringFunktioner.broken("1"));
+        assertEquals("01111111010010000001100110111", StringFunktioner.broken("10000000101101111110011001000"));
+        assertEquals("011101", StringFunktioner.broken("100010"));
+    }
 }
