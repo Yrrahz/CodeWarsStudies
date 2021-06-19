@@ -440,4 +440,56 @@ public class SamladeFunktioner
         return (rating > 5) ? GOOD : BAD;
       }
      */
+
+    // The Office - part 2 - Boredom Score
+    /*
+        Difficulty 7.
+        This challenge is only to calculate a cumulative score.
+        Codewars couldn't use the enhanced switch statement.
+        But I like it, so I keep it like this in my own repo.
+     */
+    public static String boredom(Person[] staff) {
+        int boredomAssessment = 0;
+        for(Person p : staff){
+            switch (p.department) {
+                case "accounts" -> boredomAssessment++;
+                case "finance" -> boredomAssessment += 2;
+                case "canteen" -> boredomAssessment += 10;
+                case "regulation" -> boredomAssessment += 3;
+                case "trading", "change" -> boredomAssessment += 6;
+                case "IS" -> boredomAssessment += 8;
+                case "retail" -> boredomAssessment += 5;
+                case "cleaning" -> boredomAssessment += 4;
+                case "pissing about" -> boredomAssessment += 25;
+            }
+        }
+
+        if(boredomAssessment <= 80){
+            return "kill me now";
+        }else if(boredomAssessment < 100){
+            return "i can handle this";
+        }else{
+            return "party time!!";
+        }
+    }
+    /* // Best solution
+    private static Map<String, Integer> boredom = Map.of("accounts", 1,
+                                                       "finance", 2,
+                                                       "canteen", 10,
+                                                       "regulation", 3,
+                                                       "trading", 6,
+                                                       "change", 6,
+                                                       "IS", 8,
+                                                       "retail", 5,
+                                                       "cleaning", 4,
+                                                       "pissing about", 25);
+
+  public static String boredom(Person[] staff) {
+      int score = Arrays.stream(staff)
+                   .mapToInt(person -> boredom.get(person.department))
+                   .sum();
+
+      return score <= 80 ? "kill me now" : score >= 100 ? "party time!!" : "i can handle this";
+  }
+     */
 }

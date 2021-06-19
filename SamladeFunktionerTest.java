@@ -139,4 +139,21 @@ public class SamladeFunktionerTest{
         };
         assertEquals("Get Out Now!", SamladeFunktioner.outed(meet, "john"));
     }
+
+    @Test
+    public void testTheOffice_part2_Boredom() {
+        assertEquals("party time!!", SamladeFunktioner.boredom(new Person[] {
+                new Person("tim", "accounts"),
+                new Person("jim", "accounts"),
+                new Person("randy", "pissing about"),
+                new Person("sandy", "finance"),
+                new Person("andy", "change"),
+                new Person("katie", "IS"),
+                new Person("laura", "IS"),
+                new Person("saajid", "canteen"),
+                new Person("alex", "pissing about"),
+                new Person("john", "retail"),
+                new Person("mr", "pissing about")
+        }));
+    }
 }
