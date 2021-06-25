@@ -492,4 +492,67 @@ public class SamladeFunktioner
       return score <= 80 ? "kill me now" : score >= 100 ? "party time!!" : "i can handle this";
   }
      */
+
+    /*
+    The Office V - Find a Chair
+    Difficulty 6
+    Your meeting room can take up to 8 chairs. need will tell you how many
+    have been taken. You need to find that many.
+
+    Find the spare chairs from the array of meeting rooms. Each meeting room
+    tuple will have the number of occupants as a string. Each occupant is
+    represented by 'X'. The room tuple will also have an integer telling you
+    how many chairs there are in the room.
+
+    If you need no chairs, return "Game On". If there aren't enough spare
+    chairs available, return "Not enough!".
+     */
+    public static Object meeting(Room[] x, int need) {
+        if(need == 0) return "Game On";
+
+        boolean ok = false;
+        int chairsAvail;
+        ArrayList<Integer> collectChairs = new ArrayList<>();
+
+        for(Room r : x){
+            chairsAvail = r.nrOfChairs - r.occupants.length();
+            if(chairsAvail < 0) chairsAvail = 0;
+            if(need <= 0){
+                ok = true;
+                break;
+            }else{
+                if(chairsAvail > need){
+                    collectChairs.add(need);
+                    ok = true;
+                    break;
+                }else{
+                    collectChairs.add(chairsAvail);
+                    need -= chairsAvail;
+                }
+            }
+        }
+        if(need == 0) ok = true;
+
+        if(ok){
+            return collectChairs.stream().mapToInt(i->i).toArray();
+        }else{
+            return "Not enough!";
+        }
+    }
+    /* // Best Solution
+    if(need == 0)
+        return "Game On";
+    List<Integer> answer = new ArrayList<>();
+    int taken;
+    for(Room r: x){
+        if(need > 0){
+        taken = Math.max(0,r.chairs - r.occupants.length());
+        answer.add(taken > need ? need : taken);
+        need -= taken;
+        }
+        else
+          break;
+    }
+    return need > 0 ? "Not enough!" : answer.stream().mapToInt(Integer::intValue).toArray();
+     */
 }

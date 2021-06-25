@@ -108,6 +108,7 @@ public class StringFunktioner{
      */
 
     /*
+    The Office part 4 - Meeting
     Each value represents a meeting room.
     Your job? Find the first empty one and return its index.
         'X' --> busy

@@ -156,4 +156,27 @@ public class SamladeFunktionerTest{
                 new Person("mr", "pissing about")
         }));
     }
+
+    @Test
+    public void testTheOffice_part5_MeetingRoom1() {
+        Room[] rooms = new Room[] {
+                new Room("XXX", 3),
+                new Room("XXXXX", 6),
+                new Room("XXXXXX", 9)
+        };
+        assertArrayEquals(new int[] {0, 1, 3}, (int[]) SamladeFunktioner.meeting(rooms, 4));
+    }
+
+    @Test
+    public void testTheOffice_part5_MeetingRoom2() {
+        Room[] rooms = new Room[] {
+                new Room("XXX", 1),
+                new Room("XXXXXX", 6),
+                new Room("X", 2),
+                new Room("XXXXXX", 8),
+                new Room("X", 3),
+                new Room("XXX", 1)
+        };
+        assertArrayEquals(new int[] {0, 0, 1, 2, 2}, (int[]) SamladeFunktioner.meeting(rooms, 5));
+    }
 }
