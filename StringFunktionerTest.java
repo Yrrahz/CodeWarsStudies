@@ -73,4 +73,14 @@ public class StringFunktionerTest
         assertEquals("01111111010010000001100110111", StringFunktioner.broken("10000000101101111110011001000"));
         assertEquals("011101", StringFunktioner.broken("100010"));
     }
+
+    @Test
+    public void testTheOffice_part4_Meetings1() {
+        assertEquals(2, StringFunktioner.meeting(new char[] {'X','X','O','X','X'}));
+    }
+
+    @Test
+    public void testTheOffice_part4_Meetings2() {
+        assertEquals("None available!", StringFunktioner.meeting(new char[] {'X','X','X','X','X'}));
+    }
 }

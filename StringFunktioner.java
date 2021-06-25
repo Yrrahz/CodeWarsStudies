@@ -106,4 +106,26 @@ public class StringFunktioner{
         return x.replace("0"," ").replace("1","0").replace(" ","1");
     }
      */
+
+    /*
+    Each value represents a meeting room.
+    Your job? Find the first empty one and return its index.
+        'X' --> busy
+        'O' --> empty
+    Difficulty 7.
+     */
+    public static Object meeting(char[] x) {
+        int i = 0;
+        for(char c : x){
+            if(c == 'O'){
+                return i;
+            }
+            i++;
+        }
+        return "None available!";
+    }
+    /* // Best Solution
+    int i = new String(x).indexOf('O');
+    return i < 0 ? "None available!" : i;
+     */
 }
