@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Write a description of class StringFunktioner here.
  * 
@@ -128,5 +130,74 @@ public class StringFunktioner{
     /* // Best Solution
     int i = new String(x).indexOf('O');
     return i < 0 ? "None available!" : i;
+     */
+
+    /* Difficulty 6
+     *
+     * Encoded words consist of lowercase letters and at least one asterisk;
+     * There will always be only one appropriate word from vocabulary for every word in speech;
+     * speech consists of lowercase letters, spaces and marks ?!,. ;
+     * There might be more words in vocabulary than words in speech;
+     * The length of an encoded word must be the same as an appropriate word of vocabulary;
+     * The minimum length of a word is 3;
+     */
+    public static String translate(String speech, String[] vocabulary) {
+        StringBuilder response = new StringBuilder();
+        boolean match;
+        String[] words;
+        char[] lettersOfWords, lettersOfVocabulary;
+        speech = speech.replaceAll("\\*", "A"); // I don't know how to exclude * from the main regex
+        words = speech.split("[^\\w']+");
+
+        for (String word : words) {
+            lettersOfWords = word.toCharArray();
+            for (String s : vocabulary) {
+                lettersOfVocabulary = s.toCharArray();
+                if (lettersOfWords.length == lettersOfVocabulary.length) {
+                    match = true;
+                    for (int z = 0; z < lettersOfWords.length; z++) {
+                        if (lettersOfWords[z] != 'A' && lettersOfWords[z] != lettersOfVocabulary[z]) {
+                            match = false;
+                            break;
+                        }
+                    }
+                } else {
+                    match = false;
+                }
+                if (match) {
+                    response.append(s);
+                }
+            }
+        }
+
+
+        int letterCounter = 0;
+        char[] responseArray = response.toString().toCharArray();
+        char[] speechArray = speech.toCharArray();
+        char[] finalResponse = new char[speech.length()];
+        for(int i = 0; i < speech.length(); i++){
+            if(speechArray[i] == 'A'){
+                finalResponse[i] = responseArray[letterCounter];
+                letterCounter++;
+            }else if(Character.isLetter(speechArray[i])){
+                finalResponse[i] = speechArray[i];
+                letterCounter++;
+            }else{
+                finalResponse[i] = speechArray[i];
+            }
+        }
+
+        return new String(finalResponse);
+    }
+    /* // Best Solution
+    static String translate(String speech, String[] vocab) {
+        String words[] = speech.split(" ");
+        for (int i = 0; i < words.length; i++) {
+          String regex = words[i].replaceAll("[?!,.]", "").replace("*", ".");
+          String extra = words[i].replaceAll("[a-z*]", "");
+          for (String v : vocab) if (v.matches(regex)) words[i] = v + extra;
+        }
+        return String.join(" ", words);
+    }
      */
 }

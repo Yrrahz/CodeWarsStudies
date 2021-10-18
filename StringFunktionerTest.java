@@ -83,4 +83,15 @@ public class StringFunktionerTest
     public void testTheOffice_part4_Meetings2() {
         assertEquals("None available!", StringFunktioner.meeting(new char[] {'X','X','X','X','X'}));
     }
+
+    @Test
+    public void testTranslateDiff6(){
+        assertEquals("testa,! quert", StringFunktioner.translate("t**ta,! q*ert", new String[]{"testa", "hej", "quert"}));
+        assertEquals("hello world!", StringFunktioner.translate("***lo w***d!", new String[]{"hello", "world"}));
+        assertEquals("cell, weak!", StringFunktioner.translate("c**l, w*ak!", new String[]{"hell", "cell", "week", "weak"}));
+        assertEquals("hello, world!", StringFunktioner.translate("hell*, w***d!", new String[]{"hello", "hell", "word", "world"}));
+        assertEquals("mel", StringFunktioner.translate("***", new String[]{"mel", "dell"}));
+        assertEquals("", StringFunktioner.translate("", new String[]{"hell", "weak"}));
+        assertEquals("bbbb. aaa,", StringFunktioner.translate("****. ***,", new String[]{"aaa", "bbbb"}));
+    }
 }
