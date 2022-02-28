@@ -60,9 +60,9 @@ public class StringFunktionerTest
 
     @Test
     public void testCleanString(){
-        System.out.println("Clean string: a#bc#d");
+        //System.out.println("Clean string: a#bc#d");
         assertEquals("bd", StringFunktioner.cleanString("a#bc#d"));
-        System.out.println("Clean string: a#b###c#d#");
+        //System.out.println("Clean string: a#b###c#d#");
         assertEquals("", StringFunktioner.cleanString("a#b###c#d#"));
     }
 
@@ -93,5 +93,51 @@ public class StringFunktionerTest
         assertEquals("mel", StringFunktioner.translate("***", new String[]{"mel", "dell"}));
         assertEquals("", StringFunktioner.translate("", new String[]{"hell", "weak"}));
         assertEquals("bbbb. aaa,", StringFunktioner.translate("****. ***,", new String[]{"aaa", "bbbb"}));
+    }
+
+    @Test
+    public void testPeakHeight(){
+        char[][] mountain = {
+                "    ".toCharArray(),
+                " ^^^".toCharArray(),
+                " ^^^".toCharArray(),
+                " ^^^".toCharArray(),
+                "    ".toCharArray()
+        };
+        char[][] mountain2 = {
+                "^^^^^^        ".toCharArray(),
+                " ^^^^^^^^     ".toCharArray(),
+                "  ^^^^^^^     ".toCharArray(),
+                "  ^^^^^       ".toCharArray(),
+                "  ^^^^^^^^^^^ ".toCharArray(),
+                "  ^^^^^^      ".toCharArray(),
+                "  ^^^^        ".toCharArray()
+        };
+        char[][] mountain3 = {
+                "^^^^^^^^^^^^^^^^^^^^^".toCharArray(),
+                "^^^^^^^^^^^^^^^^^^^^^".toCharArray(),
+                "^^^^^^^^^^^^^^^^^^^^^".toCharArray(),
+                "^^^^^^^^^^^^^^^^^^^^^".toCharArray(),
+                "^^^^^^^^^^^^^^^^^^^^^".toCharArray(),
+                "^^^^^^^^^^^^^^^^^^^^^".toCharArray(),
+                "^^^^^^^^^^^^^^^^^^^^^".toCharArray(),
+                "^^^^^^^^^^^^^^^^^^^^^".toCharArray(),
+                "^^^^^^^^^^^^^^^^^^^^^".toCharArray(),
+                "^^^^^^^^^^^^^^^^^^^^^".toCharArray(),
+                "^^^^^^^^^^^^^^^^^^^^^".toCharArray(),
+                "^^^^^^^^^^^^^^^^^^^^^".toCharArray(),
+                "^^^^^^^^^^^^^^^^^^^^^".toCharArray(),
+                "^^^^^^^^^^^^^^^^^^^^^".toCharArray(),
+                "^^^^^^^^^^^^^^^^^^^^^".toCharArray(),
+                "^^^^^^^^^^^^^^^^^^^^^".toCharArray(),
+                "^^^^^^^^^^^^^^^^^^^^^".toCharArray(),
+                "^^^^^^^^^^^^^^^^^^^^^".toCharArray(),
+                "^^^^^^^^^^^^^^^^^^^^^".toCharArray(),
+                "^^^^^^^^^^^^^^^^^^^^^".toCharArray(),
+                "^^^^^^^^^^^^^^^^^^^^^".toCharArray()
+        };
+        assertEquals(2, StringFunktioner.peakHeight(mountain));
+        assertEquals(3, StringFunktioner.peakHeight(mountain2));
+        assertEquals(11, StringFunktioner.peakHeight(mountain3));
     }
 }

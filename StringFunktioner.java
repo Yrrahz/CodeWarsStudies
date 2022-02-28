@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 
 /**
  * Write a description of class StringFunktioner here.
@@ -200,4 +201,82 @@ public class StringFunktioner{
         return String.join(" ", words);
     }
      */
+
+    /** Difficulty 5 **
+     * A bird flying high above a mountain range is able to estimate the height of
+     * the highest peak. Can you?
+     * @return The value of the highest peak
+     * ex:  ^^^  111
+     *      ^^^  121
+     *      ^^^  111  = 2
+     */
+    public static int peakHeight(char[][] mountain){
+        int highestPeak = 1, row = mountain.length, col = mountain[0].length;
+        boolean peak = false, peakIsHigher = true;
+
+        // HashSet is used to keep track of all cells being tested
+        HashSet<Integer> board = new HashSet<>();
+        while(peakIsHigher){
+            for(int r = 0; r < row; r++){
+                for(int c = 0; c < col; c++){
+                    if(peak && !board.contains(r*col+c)){ // After all spaces becomes zeros, check the rest...
+                        if(r == 0 || c == 0 || r == row-1 || c == col-1){
+                            mountain[r][c] = '1';
+                            board.add(r*col+c);
+                        }else{
+                            if(mountain[r-1][c] -48 < highestPeak ||
+                                mountain[r+1][c] -48 < highestPeak ||
+                                mountain[r][c-1] -48 < highestPeak ||
+                                mountain[r][c+1] -48 < highestPeak){
+                                mountain[r][c] = (char)(highestPeak + '0');
+                                board.add(r*col+c);
+                            }
+                        }
+                    }else{ // This will take all spaces and turn them into zeros
+                        if(Character.isSpaceChar(mountain[r][c])){
+                            mountain[r][c] = '0';
+                            board.add(r*col+c);
+                            // I don't actually need to put zeros. It was just easier to visualize.
+                        }
+                    }
+                }
+            }
+            if(!peak){
+                peak = true;
+            }else{
+                highestPeak++;
+            }
+            if(board.size() == row*col){
+                highestPeak--;
+                peakIsHigher = false;
+            }
+        }
+
+        return highestPeak;
+        /* Best Practice
+        int height = 0, my = mountain.length, mx = mountain[0].length;
+        char[][] arr = new char[my][mx];
+        for (int y = 0; y < my; y++) for (int x = 0; x < mx; x++) arr[y][x] = mountain[y][x];
+
+        boolean found;
+        do {
+          found = false;
+          char[][] next = new char[my][mx];
+          for (int y = 0; y < my; y++) {
+            for (int x = 0; x < mx; x++) {
+              next[y][x] = arr[y][x];
+              if (arr[y][x] == '^' && (y == 0 ||  x == 0 || y == my-1 || x == mx-1 ||
+                arr[y-1][x] == ' ' || arr[y+1][x] == ' ' || arr[y][x-1] == ' ' || arr[y][x+1] == ' ')) {
+                found = true;
+                next[y][x] = ' ';
+              }
+            }
+          }
+          if (found) { height++; arr = next; }
+
+        } while (found);
+
+        return height;
+         */
+    }
 }
