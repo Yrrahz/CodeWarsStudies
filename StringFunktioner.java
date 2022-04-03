@@ -279,4 +279,44 @@ public class StringFunktioner{
         return height;
          */
     }
+
+    /** Difficulty 6
+     * Write a function that takes in a string of one or more words, and returns the same
+     * string, but with all five or more letter words reversed (Just like the name of this
+     * Kata). Strings passed in will consist of only letters and spaces.
+     * Spaces will be included only when more than one word is present.
+     */
+    public static String spinWords(String sentence) {
+        if(sentence.isEmpty()){
+            return "";
+        }
+        StringBuilder sb = new StringBuilder();
+        String[] wordsInArray = sentence.split("\\s+");
+        String[] result = new String[wordsInArray.length];
+        int i = 0;
+        for(String s : wordsInArray){
+            if(s.length() > 4){
+                sb.append(s).reverse();
+                result[i] = sb.toString();
+                sb.setLength(0);
+            }else{
+                result[i] = s;
+            }
+            i++;
+        }
+        sb.setLength(0);
+        for(String s : result){
+            sb.append(s).append(" ");
+        }
+        return sb.toString().trim();
+        /* Best solution
+        String[] words = sentence.split(" ");
+        for (int i=0; i<words.length; i++) {
+          if (words[i].length() >= 5) {
+            words[i] = new StringBuilder(words[i]).reverse().toString();
+          }
+        }
+        return String.join(" ",words);
+         */
+    }
 }

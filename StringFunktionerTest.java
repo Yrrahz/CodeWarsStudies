@@ -140,4 +140,10 @@ public class StringFunktionerTest
         assertEquals(3, StringFunktioner.peakHeight(mountain2));
         assertEquals(11, StringFunktioner.peakHeight(mountain3));
     }
+
+    @Test
+    public void testSpinWords() {
+        assertEquals("emocleW", StringFunktioner.spinWords("Welcome"));
+        assertEquals("Hey wollef sroirraw", StringFunktioner.spinWords("Hey fellow warriors"));
+    }
 }
