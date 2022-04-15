@@ -555,4 +555,33 @@ public class SamladeFunktioner
     }
     return need > 0 ? "Not enough!" : answer.stream().mapToInt(Integer::intValue).toArray();
      */
+
+    /* Difficulty 5
+    A program that determines how many digits are in all the page's numbers in a book with pages from 1 to n (inclusive).
+    A book with 4 pages has 4 digits (one for each page) while a 12-page book has 15 (9 for 1-9, plus 2 each for 10, 11, 12).
+    The program needs to be able to handle books up to 400,000,000,000,000,000 pages.
+     */
+    public static long pageDigits(long pages) {
+        long nrOfDigits = String.valueOf(pages).length();
+        long total = (pages - (long)Math.pow(10,nrOfDigits-1) + 1)*nrOfDigits;
+
+        while((nrOfDigits-1) >= 1){
+            total += ((long)Math.pow(10,nrOfDigits-1) - (long)Math.pow(10,nrOfDigits-2))*(nrOfDigits-1);
+            nrOfDigits--;
+        }
+
+        return total;
+    }
+    /* // I thought my solution was actually one of the better ones, but these 2 were interesting
+    long k = 0, i = 1;
+    while (i <= pages) {
+      k += pages - i + 1;
+      i *= 10;
+    }
+    return k;
+    //==================
+    int digits = 1 + (int) Math.log10(pages);
+    long tenpow = (long) Math.pow(10, digits);
+    return digits * (pages + 1) - (tenpow - 1) / 9;
+     */
 }

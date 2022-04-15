@@ -179,4 +179,13 @@ public class SamladeFunktionerTest{
         };
         assertArrayEquals(new int[] {0, 0, 1, 2, 2}, (int[]) SamladeFunktioner.meeting(rooms, 5));
     }
+
+    @Test
+    public void testPageDigits(){
+        assertEquals(261, SamladeFunktioner.pageDigits(123));
+        assertEquals(7, SamladeFunktioner.pageDigits(7));
+        assertEquals(11, SamladeFunktioner.pageDigits(10));
+        assertEquals(1, SamladeFunktioner.pageDigits(1));
+        assertEquals(3829, SamladeFunktioner.pageDigits(1234));
+    }
 }
