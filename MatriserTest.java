@@ -90,4 +90,10 @@ public class MatriserTest{
       assertEquals(new BigInteger("2"),Matriser.padovanNr(4));
       assertEquals(new BigInteger("1177482265857"),Matriser.padovanNr(100));
     }
+
+    @Test
+    public void testTenMinWalk(){
+        assertTrue("Should return true", Matriser.TenMinWalk(new char[] {'n','s','n','s','n','s','n','s','n','s'}));
+        assertFalse("Should return false", Matriser.TenMinWalk(new char[] {'w','e','w','e','w','e','w','e','w','e','w','e'}));
+    }
 }
