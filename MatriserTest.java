@@ -93,7 +93,7 @@ public class MatriserTest{
 
     @Test
     public void testTenMinWalk(){
-        assertTrue("Should return true", Matriser.TenMinWalk(new char[] {'n','s','n','s','n','s','n','s','n','s'}));
-        assertFalse("Should return false", Matriser.TenMinWalk(new char[] {'w','e','w','e','w','e','w','e','w','e','w','e'}));
+        assertTrue("Should return true", Matriser.tenMinWalk(new char[] {'n','s','n','s','n','s','n','s','n','s'}));
+        assertFalse("Should return false", Matriser.tenMinWalk(new char[] {'w','e','w','e','w','e','w','e','w','e','w','e'}));
     }
 }

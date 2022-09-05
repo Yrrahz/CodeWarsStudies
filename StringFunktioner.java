@@ -319,4 +319,41 @@ public class StringFunktioner{
         return String.join(" ",words);
          */
     }
+
+    /**
+     * The rgb function is incomplete. Complete it so that passing in RGB decimal values
+     * will result in a hexadecimal representation being returned. Valid decimal values
+     * for RGB are 0 - 255. Any values that fall out of that range must be rounded to the
+     * closest valid value.
+     *
+     * Note: Your answer should always be 6 characters long
+     * the shorthand with 3 will not work here.
+     */
+    public static String rgb(int r, int g, int b){
+        StringBuilder hexResponse = new StringBuilder();
+        int[] rgbArray = new int[]{r,g,b};
+        for(int digit : rgbArray){
+            if(digit < 0 ){
+                digit = 0;
+            }else if(digit > 255){
+                digit = 255;
+            }
+            if(digit < 16){
+                hexResponse.append("0");
+            }
+            hexResponse.append(Integer.toHexString(digit));
+        }
+
+        return hexResponse.toString().toUpperCase();
+        /* Best Solution
+        if(r < 0) r = 0;
+        if(g < 0) g = 0;
+        if(b < 0) b = 0;
+        if(r > 255) r = 255;
+        if(g > 255) g = 255;
+        if(b > 255) b = 255;
+
+        return String.format("%02X%02X%02X", r, g, b);
+         */
+    }
 }

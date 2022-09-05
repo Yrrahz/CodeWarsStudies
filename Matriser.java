@@ -1,5 +1,4 @@
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,7 +7,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.TreeMap;
-import java.util.Comparator;
 import java.math.BigInteger;
 /**
  * Write a description of class Matriser here.
@@ -443,8 +441,7 @@ public class Matriser
      * (you don't want to be early or late!) and will, of course, return you to your
      * starting point. Return false otherwise. (Arrays will not have to be checked)
      */
-
-    public static boolean TenMinWalk(char[] walk){
+    public static boolean tenMinWalk(char[] walk){
         if(walk.length != 10){
             return false;
         }

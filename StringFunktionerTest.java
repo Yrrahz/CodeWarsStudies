@@ -146,4 +146,14 @@ public class StringFunktionerTest
         assertEquals("emocleW", StringFunktioner.spinWords("Welcome"));
         assertEquals("Hey wollef sroirraw", StringFunktioner.spinWords("Hey fellow warriors"));
     }
+
+    @Test
+    public void testRgb(){
+        assertEquals("3A4D75",StringFunktioner.rgb(58,77, 117));
+        assertEquals("For input: (0, 0, 0)", "000000", StringFunktioner.rgb(0, 0, 0));
+        assertEquals("For input: (1, 2, 3)", "010203", StringFunktioner.rgb(1, 2, 3));
+        assertEquals("For input: (255, 255, 255)", "FFFFFF", StringFunktioner.rgb(255, 255, 255));
+        assertEquals("For input: (254, 253, 252)", "FEFDFC", StringFunktioner.rgb(254, 253, 252));
+        assertEquals("For input: (-20, 275, 125)", "00FF7D", StringFunktioner.rgb(-20, 275, 125));
+    }
 }
